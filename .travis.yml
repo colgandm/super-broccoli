@@ -9,3 +9,13 @@ before_install:
 
 script:
   - docker run -e CI=true colgandm/super-broccoli npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'eu-west-1'
+  app: 'super-broccoli'
+  env: 'Superbroccoli-env'
+  bucket_name: 'elasticbeanstalk-eu-west-1-043272625120'
+  bucket_path: 'super-broccoli'
+  on:
+    branch: master
